@@ -1,57 +1,57 @@
 let friends=[{
-  "Name": "Pavel",
-  "Age":23,
-  "Gender":"Man",
-  "Work": null,
+  name: "Pavel",
+  age:23,
+  gender:"Man",
+  'work': null,
   CreateWork(name){
-  this.Work= name;
+  this.work= name;
 },
   sayFullInfo(){
       return `Имя - ${this.Name}, Возраст-${this.Age}, Пол -${this.Gender}`
   }
   },
    {
-  "Name": "Egor",
-  "Age":19,
-  "Gender":"Man",
-  "Work": null,
+  name: "Egor",
+  age:19,
+  gender:"Man",
+  'work': null,
   CreateWork(name){
-  this.Work= name;
+  this.work= name;
 },
   sayFullInfo(){
     return `Имя - ${this.Name}, Возраст-${this.Age}, Пол -${this.Gender}`
 }
   },
   {
-  "Name": "Viktoria",
-  "Age":19,
-  "Gender":"Woman",
-  "Work": null,
+  name: "Viktoria",
+  age:19,
+  gender:"Woman",
+  'work': null,
   CreateWork(name){
-  this.Work= name;
+  this.work= name;
 }  ,
    sayFullInfo(){
     return `Имя - ${this.Name}, Возраст-${this.Age}, Пол -${this.Gender}`
 }
   },
   {
-  "Name": "Alexander",
-  "Age":21,
-  "Gender":"Man" ,
-  "Work": null,
+  name: "Alexander",
+  age:21,
+  gender:"Man" ,
+  'work': null,
   CreateWork(name){
-  this.Work= name},
+  this.work= name},
   sayFullInfo(){
     return `Имя - ${this.Name}, Возраст-${this.Age}, Пол -${this.Gender}`
 }
   },
   {
-  "Name": "Jaroslav",
-  "Age":19,
-  "Gender":"Man",
-  "Work": null,
+  name: "Jaroslav",
+  age:19,
+  gender:"Man",
+  'work': null,
   CreateWork(name){
-  this.Work= name},
+  this.work= name},
   sayFullInfo(){
     return `Имя - ${this.Name}, Возраст-${this.Age}, Пол -${this.Gender}`
 }
@@ -69,28 +69,23 @@ let maxage = friends.reduce((prev, cur) => {
 let mediumage = friends.reduce((prev,cur)=>prev + cur.Age/5,0);
 
 
-function delobj(i){
-    return friends.splice(i,1);
-};
+let delobj=((i)=>friends.splice(i,1));
+
 
 let findwoman = friends.filter((item)=>item.Gender==="Woman");
 
 let unemployed = friends.filter((item)=>item.Work==null);
 
-function addfriend(name,age,gender){
-    return friends.push({"Name":name,"Age":age,"Gender":gender});
-};
+//let addfriend=friends.push((name,age,gender)=>({"name":name,"age":age,"gender":gender}));
+
 
 let findman = friends.filter((item)=>item.Gender==="Man");
+ friends[0].CreateWork("developer");
+
+let showjob=((arr)=> arr.map((item)=>item.work));
+  
+let sameage= (arr) => `${arr.map(item => item.age).filter((item, pos, arr) => pos !== arr.indexOf(item)).join(`, `)}`
 
 
-let showjob = friends.filter((item)=>item.Work!==null) ;
+let getyear=((arr)=>arr.map((item)=> `Имя -${item.name }` +" "+ (`Возраст -${new Date().getFullYear()-item.age}`)));
 
-let sameage=friends.filter((elem,pos,arr)=>pos!==arr.indexOf(elem) || pos!==arr.lastIndexOf(elem));
-
-
-function getyear(age){
-    return new Date().getFullYear()-age;
-}
-
-console.log(sameage);
